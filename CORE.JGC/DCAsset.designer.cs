@@ -78,7 +78,7 @@ namespace CORE.JGC
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.MsAsset_IUD")]
 		public ISingleResult<MsAsset_IUDResult> MsAsset_IUD(
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="AssetCode", DbType="VarChar(10)")] string assetCode, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="AssetCode", DbType="VarChar(15)")] string assetCode, 
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="AssetName", DbType="VarChar(200)")] string assetName, 
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="AssetBrandCode", DbType="VarChar(20)")] string assetBrandCode, 
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="AssetModelCode", DbType="VarChar(20)")] string assetModelCode, 
@@ -91,7 +91,6 @@ namespace CORE.JGC
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="QRCode", DbType="VarChar(MAX)")] string qRCode, 
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="SiteCode", DbType="VarChar(50)")] string siteCode, 
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="LocationCode", DbType="VarChar(50)")] string locationCode, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="AssignTo", DbType="VarChar(100)")] string assignTo, 
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="PurchaseNo", DbType="VarChar(20)")] string purchaseNo, 
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="CurrencyCode", DbType="VarChar(5)")] string currencyCode, 
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="PurchasePrice", DbType="Decimal(18,0)")] System.Nullable<decimal> purchasePrice, 
@@ -103,7 +102,7 @@ namespace CORE.JGC
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserID", DbType="VarChar(50)")] string userID, 
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="No", DbType="Int")] System.Nullable<int> no)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), assetCode, assetName, assetBrandCode, assetModelCode, assetCategoryCode, assetSerialNo, assetTypeCode, bActive, bCapitalized, photo, qRCode, siteCode, locationCode, assignTo, purchaseNo, currencyCode, purchasePrice, purchaseDate, supplierCode, companyID, deptCode, warrantyMonth, userID, no);
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), assetCode, assetName, assetBrandCode, assetModelCode, assetCategoryCode, assetSerialNo, assetTypeCode, bActive, bCapitalized, photo, qRCode, siteCode, locationCode, purchaseNo, currencyCode, purchasePrice, purchaseDate, supplierCode, companyID, deptCode, warrantyMonth, userID, no);
 			return ((ISingleResult<MsAsset_IUDResult>)(result.ReturnValue));
 		}
 		
@@ -310,11 +309,30 @@ namespace CORE.JGC
 			return ((ISingleResult<MsType_ViewResult>)(result.ReturnValue));
 		}
 		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.TrxCheckIn_IUD")]
+		public void TrxCheckIn_IUD([global::System.Data.Linq.Mapping.ParameterAttribute(Name="AssetCode", DbType="VarChar(15)")] string assetCode, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Action", DbType="VarChar(50)")] string action, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="SiteCode", DbType="VarChar(20)")] string siteCode, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="LocationCode", DbType="VarChar(20)")] string locationCode, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CheckOutDueDate", DbType="DateTime")] System.Nullable<System.DateTime> checkOutDueDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Email", DbType="VarChar(200)")] string email, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Notes", DbType="VarChar(200)")] string notes, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserID", DbType="VarChar(50)")] string userID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="No", DbType="Int")] System.Nullable<int> no)
+		{
+			this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), assetCode, action, siteCode, locationCode, checkOutDueDate, email, notes, userID, no);
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.TrxCheckIn_View")]
 		public ISingleResult<TrxCheckIn_ViewResult> TrxCheckIn_View([global::System.Data.Linq.Mapping.ParameterAttribute(Name="CheckInNo", DbType="VarChar(20)")] string checkInNo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Tipe", DbType="VarChar(1)")] string tipe)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), checkInNo, tipe);
 			return ((ISingleResult<TrxCheckIn_ViewResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.TrxCheckInLine_View")]
+		public ISingleResult<TrxCheckInLine_ViewResult> TrxCheckInLine_View([global::System.Data.Linq.Mapping.ParameterAttribute(Name="CheckInNo", DbType="VarChar(20)")] string checkInNo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="AssetCode", DbType="VarChar(10)")] string assetCode, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Tipe", DbType="VarChar(1)")] string tipe)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), checkInNo, assetCode, tipe);
+			return ((ISingleResult<TrxCheckInLine_ViewResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.TrxCheckOut_IUD")]
+		public void TrxCheckOut_IUD([global::System.Data.Linq.Mapping.ParameterAttribute(Name="AssetCode", DbType="VarChar(15)")] string assetCode, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Action", DbType="VarChar(50)")] string action, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="SiteCode", DbType="VarChar(20)")] string siteCode, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="LocationCode", DbType="VarChar(20)")] string locationCode, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CheckOutDueDate", DbType="DateTime")] System.Nullable<System.DateTime> checkOutDueDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Email", DbType="VarChar(200)")] string email, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Notes", DbType="VarChar(200)")] string notes, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserID", DbType="VarChar(50)")] string userID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="No", DbType="Int")] System.Nullable<int> no)
+		{
+			this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), assetCode, action, siteCode, locationCode, checkOutDueDate, email, notes, userID, no);
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.TrxCheckOut_View")]
@@ -324,11 +342,11 @@ namespace CORE.JGC
 			return ((ISingleResult<TrxCheckOut_ViewResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.TrxDeleteAsset_View")]
-		public ISingleResult<TrxDeleteAsset_ViewResult> TrxDeleteAsset_View([global::System.Data.Linq.Mapping.ParameterAttribute(Name="DeleteNo", DbType="VarChar(20)")] string deleteNo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Tipe", DbType="VarChar(1)")] string tipe)
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.TrxCheckOutLine_View")]
+		public ISingleResult<TrxCheckOutLine_ViewResult> TrxCheckOutLine_View([global::System.Data.Linq.Mapping.ParameterAttribute(Name="CheckOutNo", DbType="VarChar(20)")] string checkOutNo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="AssetCode", DbType="VarChar(10)")] string assetCode, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Tipe", DbType="VarChar(1)")] string tipe)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), deleteNo, tipe);
-			return ((ISingleResult<TrxDeleteAsset_ViewResult>)(result.ReturnValue));
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), checkOutNo, assetCode, tipe);
+			return ((ISingleResult<TrxCheckOutLine_ViewResult>)(result.ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.TrxDisposeAsset_View")]
@@ -338,6 +356,13 @@ namespace CORE.JGC
 			return ((ISingleResult<TrxDisposeAsset_ViewResult>)(result.ReturnValue));
 		}
 		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.TrxDisposeAssetLine_View")]
+		public ISingleResult<TrxDisposeAssetLine_ViewResult> TrxDisposeAssetLine_View([global::System.Data.Linq.Mapping.ParameterAttribute(Name="DisposeNo", DbType="VarChar(20)")] string disposeNo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="AssetCode", DbType="VarChar(10)")] string assetCode, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Tipe", DbType="VarChar(1)")] string tipe)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), disposeNo, assetCode, tipe);
+			return ((ISingleResult<TrxDisposeAssetLine_ViewResult>)(result.ReturnValue));
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.TrxMaintenanceAsset_View")]
 		public ISingleResult<TrxMaintenanceAsset_ViewResult> TrxMaintenanceAsset_View([global::System.Data.Linq.Mapping.ParameterAttribute(Name="MaintenanceAssetNo", DbType="VarChar(20)")] string maintenanceAssetNo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Tipe", DbType="VarChar(1)")] string tipe)
 		{
@@ -345,11 +370,11 @@ namespace CORE.JGC
 			return ((ISingleResult<TrxMaintenanceAsset_ViewResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.TrxSellingAsset_View")]
-		public ISingleResult<TrxSellingAsset_ViewResult> TrxSellingAsset_View([global::System.Data.Linq.Mapping.ParameterAttribute(Name="SellingNo", DbType="VarChar(20)")] string sellingNo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Tipe", DbType="VarChar(1)")] string tipe)
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.TrxMaintenanceAssetLine_View")]
+		public ISingleResult<TrxMaintenanceAssetLine_ViewResult> TrxMaintenanceAssetLine_View([global::System.Data.Linq.Mapping.ParameterAttribute(Name="MaintenanceAssetNo", DbType="VarChar(20)")] string maintenanceAssetNo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="AssetCode", DbType="VarChar(10)")] string assetCode, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Tipe", DbType="VarChar(1)")] string tipe)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), sellingNo, tipe);
-			return ((ISingleResult<TrxSellingAsset_ViewResult>)(result.ReturnValue));
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), maintenanceAssetNo, assetCode, tipe);
+			return ((ISingleResult<TrxMaintenanceAssetLine_ViewResult>)(result.ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.UtilGroupMenu_IUD")]
@@ -881,7 +906,7 @@ namespace CORE.JGC
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetTagID", DbType="VarChar(10) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetTagID", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
 		public string AssetTagID
 		{
 			get
@@ -2351,7 +2376,7 @@ namespace CORE.JGC
 		{
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LocationCode", DbType="VarChar(10) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LocationCode", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
 		public string LocationCode
 		{
 			get
@@ -2467,7 +2492,7 @@ namespace CORE.JGC
 		{
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SiteCode", DbType="VarChar(7) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SiteCode", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
 		public string SiteCode
 		{
 			get
@@ -3087,7 +3112,7 @@ namespace CORE.JGC
 		
 		private string _NamaType;
 		
-		private System.DateTime _ReturnDate;
+		private System.Nullable<System.DateTime> _ReturnDate;
 		
 		private string _SiteCode;
 		
@@ -3117,7 +3142,7 @@ namespace CORE.JGC
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="VarChar(5) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="VarChar(5)")]
 		public string Status
 		{
 			get
@@ -3149,7 +3174,7 @@ namespace CORE.JGC
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Type", DbType="VarChar(5) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Type", DbType="VarChar(5)")]
 		public string Type
 		{
 			get
@@ -3181,8 +3206,8 @@ namespace CORE.JGC
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ReturnDate", DbType="DateTime NOT NULL")]
-		public System.DateTime ReturnDate
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ReturnDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ReturnDate
 		{
 			get
 			{
@@ -3193,6 +3218,162 @@ namespace CORE.JGC
 				if ((this._ReturnDate != value))
 				{
 					this._ReturnDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SiteCode", DbType="VarChar(20)")]
+		public string SiteCode
+		{
+			get
+			{
+				return this._SiteCode;
+			}
+			set
+			{
+				if ((this._SiteCode != value))
+				{
+					this._SiteCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SiteName", DbType="VarChar(50)")]
+		public string SiteName
+		{
+			get
+			{
+				return this._SiteName;
+			}
+			set
+			{
+				if ((this._SiteName != value))
+				{
+					this._SiteName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LocationCode", DbType="VarChar(20)")]
+		public string LocationCode
+		{
+			get
+			{
+				return this._LocationCode;
+			}
+			set
+			{
+				if ((this._LocationCode != value))
+				{
+					this._LocationCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LocationName", DbType="VarChar(50)")]
+		public string LocationName
+		{
+			get
+			{
+				return this._LocationName;
+			}
+			set
+			{
+				if ((this._LocationName != value))
+				{
+					this._LocationName = value;
+				}
+			}
+		}
+	}
+	
+	public partial class TrxCheckInLine_ViewResult
+	{
+		
+		private string _CheckInNo;
+		
+		private string _AssetCode;
+		
+		private string _AssetName;
+		
+		private string _AssetSerialNo;
+		
+		private string _SiteCode;
+		
+		private string _SiteName;
+		
+		private string _LocationCode;
+		
+		private string _LocationName;
+		
+		private string _Iby;
+		
+		private System.Nullable<System.DateTime> _Ion;
+		
+		public TrxCheckInLine_ViewResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CheckInNo", DbType="VarChar(20)")]
+		public string CheckInNo
+		{
+			get
+			{
+				return this._CheckInNo;
+			}
+			set
+			{
+				if ((this._CheckInNo != value))
+				{
+					this._CheckInNo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetCode", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
+		public string AssetCode
+		{
+			get
+			{
+				return this._AssetCode;
+			}
+			set
+			{
+				if ((this._AssetCode != value))
+				{
+					this._AssetCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetName", DbType="VarChar(500)")]
+		public string AssetName
+		{
+			get
+			{
+				return this._AssetName;
+			}
+			set
+			{
+				if ((this._AssetName != value))
+				{
+					this._AssetName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetSerialNo", DbType="VarChar(50)")]
+		public string AssetSerialNo
+		{
+			get
+			{
+				return this._AssetSerialNo;
+			}
+			set
+			{
+				if ((this._AssetSerialNo != value))
+				{
+					this._AssetSerialNo = value;
 				}
 			}
 		}
@@ -3257,6 +3438,38 @@ namespace CORE.JGC
 				if ((this._LocationName != value))
 				{
 					this._LocationName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Iby", DbType="VarChar(50)")]
+		public string Iby
+		{
+			get
+			{
+				return this._Iby;
+			}
+			set
+			{
+				if ((this._Iby != value))
+				{
+					this._Iby = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ion", DbType="DateTime")]
+		public System.Nullable<System.DateTime> Ion
+		{
+			get
+			{
+				return this._Ion;
+			}
+			set
+			{
+				if ((this._Ion != value))
+				{
+					this._Ion = value;
 				}
 			}
 		}
@@ -3540,90 +3753,162 @@ namespace CORE.JGC
 		}
 	}
 	
-	public partial class TrxDeleteAsset_ViewResult
+	public partial class TrxCheckOutLine_ViewResult
 	{
 		
-		private string _DeleteNo;
+		private string _CheckOutNo;
 		
-		private string _Status;
+		private string _AssetCode;
 		
-		private string _NamaStatus;
+		private string _AssetName;
 		
-		private string _Notes;
+		private string _AssetSerialNo;
+		
+		private string _SiteCode;
+		
+		private string _SiteName;
+		
+		private string _LocationCode;
+		
+		private string _LocationName;
 		
 		private string _Iby;
 		
-		private System.DateTime _Ion;
+		private System.Nullable<System.DateTime> _Ion;
 		
-		public TrxDeleteAsset_ViewResult()
+		public TrxCheckOutLine_ViewResult()
 		{
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DeleteNo", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
-		public string DeleteNo
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CheckOutNo", DbType="VarChar(20)")]
+		public string CheckOutNo
 		{
 			get
 			{
-				return this._DeleteNo;
+				return this._CheckOutNo;
 			}
 			set
 			{
-				if ((this._DeleteNo != value))
+				if ((this._CheckOutNo != value))
 				{
-					this._DeleteNo = value;
+					this._CheckOutNo = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="VarChar(5) NOT NULL", CanBeNull=false)]
-		public string Status
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetCode", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
+		public string AssetCode
 		{
 			get
 			{
-				return this._Status;
+				return this._AssetCode;
 			}
 			set
 			{
-				if ((this._Status != value))
+				if ((this._AssetCode != value))
 				{
-					this._Status = value;
+					this._AssetCode = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NamaStatus", DbType="VarChar(50)")]
-		public string NamaStatus
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetName", DbType="VarChar(500)")]
+		public string AssetName
 		{
 			get
 			{
-				return this._NamaStatus;
+				return this._AssetName;
 			}
 			set
 			{
-				if ((this._NamaStatus != value))
+				if ((this._AssetName != value))
 				{
-					this._NamaStatus = value;
+					this._AssetName = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Notes", DbType="VarChar(500)")]
-		public string Notes
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetSerialNo", DbType="VarChar(50)")]
+		public string AssetSerialNo
 		{
 			get
 			{
-				return this._Notes;
+				return this._AssetSerialNo;
 			}
 			set
 			{
-				if ((this._Notes != value))
+				if ((this._AssetSerialNo != value))
 				{
-					this._Notes = value;
+					this._AssetSerialNo = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Iby", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SiteCode", DbType="VarChar(7)")]
+		public string SiteCode
+		{
+			get
+			{
+				return this._SiteCode;
+			}
+			set
+			{
+				if ((this._SiteCode != value))
+				{
+					this._SiteCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SiteName", DbType="VarChar(50)")]
+		public string SiteName
+		{
+			get
+			{
+				return this._SiteName;
+			}
+			set
+			{
+				if ((this._SiteName != value))
+				{
+					this._SiteName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LocationCode", DbType="VarChar(10)")]
+		public string LocationCode
+		{
+			get
+			{
+				return this._LocationCode;
+			}
+			set
+			{
+				if ((this._LocationCode != value))
+				{
+					this._LocationCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LocationName", DbType="VarChar(50)")]
+		public string LocationName
+		{
+			get
+			{
+				return this._LocationName;
+			}
+			set
+			{
+				if ((this._LocationName != value))
+				{
+					this._LocationName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Iby", DbType="VarChar(50)")]
 		public string Iby
 		{
 			get
@@ -3639,8 +3924,8 @@ namespace CORE.JGC
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ion", DbType="DateTime NOT NULL")]
-		public System.DateTime Ion
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ion", DbType="DateTime")]
+		public System.Nullable<System.DateTime> Ion
 		{
 			get
 			{
@@ -3775,6 +4060,194 @@ namespace CORE.JGC
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ion", DbType="DateTime NOT NULL")]
 		public System.DateTime Ion
+		{
+			get
+			{
+				return this._Ion;
+			}
+			set
+			{
+				if ((this._Ion != value))
+				{
+					this._Ion = value;
+				}
+			}
+		}
+	}
+	
+	public partial class TrxDisposeAssetLine_ViewResult
+	{
+		
+		private string _DisposeNo;
+		
+		private string _AssetCode;
+		
+		private string _AssetName;
+		
+		private string _AssetSerialNo;
+		
+		private string _SiteCode;
+		
+		private string _SiteName;
+		
+		private string _LocationCode;
+		
+		private string _LocationName;
+		
+		private string _Iby;
+		
+		private System.Nullable<System.DateTime> _Ion;
+		
+		public TrxDisposeAssetLine_ViewResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DisposeNo", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+		public string DisposeNo
+		{
+			get
+			{
+				return this._DisposeNo;
+			}
+			set
+			{
+				if ((this._DisposeNo != value))
+				{
+					this._DisposeNo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetCode", DbType="VarChar(10) NOT NULL", CanBeNull=false)]
+		public string AssetCode
+		{
+			get
+			{
+				return this._AssetCode;
+			}
+			set
+			{
+				if ((this._AssetCode != value))
+				{
+					this._AssetCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetName", DbType="VarChar(500)")]
+		public string AssetName
+		{
+			get
+			{
+				return this._AssetName;
+			}
+			set
+			{
+				if ((this._AssetName != value))
+				{
+					this._AssetName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetSerialNo", DbType="VarChar(50)")]
+		public string AssetSerialNo
+		{
+			get
+			{
+				return this._AssetSerialNo;
+			}
+			set
+			{
+				if ((this._AssetSerialNo != value))
+				{
+					this._AssetSerialNo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SiteCode", DbType="VarChar(7)")]
+		public string SiteCode
+		{
+			get
+			{
+				return this._SiteCode;
+			}
+			set
+			{
+				if ((this._SiteCode != value))
+				{
+					this._SiteCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SiteName", DbType="VarChar(50)")]
+		public string SiteName
+		{
+			get
+			{
+				return this._SiteName;
+			}
+			set
+			{
+				if ((this._SiteName != value))
+				{
+					this._SiteName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LocationCode", DbType="VarChar(10)")]
+		public string LocationCode
+		{
+			get
+			{
+				return this._LocationCode;
+			}
+			set
+			{
+				if ((this._LocationCode != value))
+				{
+					this._LocationCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LocationName", DbType="VarChar(50)")]
+		public string LocationName
+		{
+			get
+			{
+				return this._LocationName;
+			}
+			set
+			{
+				if ((this._LocationName != value))
+				{
+					this._LocationName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Iby", DbType="VarChar(50)")]
+		public string Iby
+		{
+			get
+			{
+				return this._Iby;
+			}
+			set
+			{
+				if ((this._Iby != value))
+				{
+					this._Iby = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ion", DbType="DateTime")]
+		public System.Nullable<System.DateTime> Ion
 		{
 			get
 			{
@@ -4014,144 +4487,162 @@ namespace CORE.JGC
 		}
 	}
 	
-	public partial class TrxSellingAsset_ViewResult
+	public partial class TrxMaintenanceAssetLine_ViewResult
 	{
 		
-		private string _SellingNo;
+		private string _MaintenanceAssetNo;
 		
-		private string _Status;
+		private string _AssetCode;
 		
-		private string _NamaStatus;
+		private string _AssetName;
 		
-		private System.DateTime _SellingDate;
+		private string _AssetSerialNo;
 		
-		private string _SellingNo1;
+		private string _SiteCode;
 		
-		private System.Nullable<decimal> _SellingAmount;
+		private string _SiteName;
 		
-		private string _Notes;
+		private string _LocationCode;
+		
+		private string _LocationName;
 		
 		private string _Iby;
 		
-		private System.DateTime _Ion;
+		private System.Nullable<System.DateTime> _Ion;
 		
-		public TrxSellingAsset_ViewResult()
+		public TrxMaintenanceAssetLine_ViewResult()
 		{
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SellingNo", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
-		public string SellingNo
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaintenanceAssetNo", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+		public string MaintenanceAssetNo
 		{
 			get
 			{
-				return this._SellingNo;
+				return this._MaintenanceAssetNo;
 			}
 			set
 			{
-				if ((this._SellingNo != value))
+				if ((this._MaintenanceAssetNo != value))
 				{
-					this._SellingNo = value;
+					this._MaintenanceAssetNo = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="VarChar(5) NOT NULL", CanBeNull=false)]
-		public string Status
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetCode", DbType="VarChar(10) NOT NULL", CanBeNull=false)]
+		public string AssetCode
 		{
 			get
 			{
-				return this._Status;
+				return this._AssetCode;
 			}
 			set
 			{
-				if ((this._Status != value))
+				if ((this._AssetCode != value))
 				{
-					this._Status = value;
+					this._AssetCode = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NamaStatus", DbType="VarChar(50)")]
-		public string NamaStatus
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetName", DbType="VarChar(500)")]
+		public string AssetName
 		{
 			get
 			{
-				return this._NamaStatus;
+				return this._AssetName;
 			}
 			set
 			{
-				if ((this._NamaStatus != value))
+				if ((this._AssetName != value))
 				{
-					this._NamaStatus = value;
+					this._AssetName = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SellingDate", DbType="DateTime NOT NULL")]
-		public System.DateTime SellingDate
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetSerialNo", DbType="VarChar(50)")]
+		public string AssetSerialNo
 		{
 			get
 			{
-				return this._SellingDate;
+				return this._AssetSerialNo;
 			}
 			set
 			{
-				if ((this._SellingDate != value))
+				if ((this._AssetSerialNo != value))
 				{
-					this._SellingDate = value;
+					this._AssetSerialNo = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SellingNo1", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
-		public string SellingNo1
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SiteCode", DbType="VarChar(7)")]
+		public string SiteCode
 		{
 			get
 			{
-				return this._SellingNo1;
+				return this._SiteCode;
 			}
 			set
 			{
-				if ((this._SellingNo1 != value))
+				if ((this._SiteCode != value))
 				{
-					this._SellingNo1 = value;
+					this._SiteCode = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SellingAmount", DbType="Decimal(18,0)")]
-		public System.Nullable<decimal> SellingAmount
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SiteName", DbType="VarChar(50)")]
+		public string SiteName
 		{
 			get
 			{
-				return this._SellingAmount;
+				return this._SiteName;
 			}
 			set
 			{
-				if ((this._SellingAmount != value))
+				if ((this._SiteName != value))
 				{
-					this._SellingAmount = value;
+					this._SiteName = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Notes", DbType="VarChar(500)")]
-		public string Notes
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LocationCode", DbType="VarChar(10)")]
+		public string LocationCode
 		{
 			get
 			{
-				return this._Notes;
+				return this._LocationCode;
 			}
 			set
 			{
-				if ((this._Notes != value))
+				if ((this._LocationCode != value))
 				{
-					this._Notes = value;
+					this._LocationCode = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Iby", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LocationName", DbType="VarChar(50)")]
+		public string LocationName
+		{
+			get
+			{
+				return this._LocationName;
+			}
+			set
+			{
+				if ((this._LocationName != value))
+				{
+					this._LocationName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Iby", DbType="VarChar(50)")]
 		public string Iby
 		{
 			get
@@ -4167,8 +4658,8 @@ namespace CORE.JGC
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ion", DbType="DateTime NOT NULL")]
-		public System.DateTime Ion
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ion", DbType="DateTime")]
+		public System.Nullable<System.DateTime> Ion
 		{
 			get
 			{

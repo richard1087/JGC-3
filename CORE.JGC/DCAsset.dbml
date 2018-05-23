@@ -36,7 +36,7 @@
     </ElementType>
   </Function>
   <Function Name="dbo.MsAsset_IUD" Method="MsAsset_IUD">
-    <Parameter Name="AssetCode" Parameter="assetCode" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="AssetCode" Parameter="assetCode" Type="System.String" DbType="VarChar(15)" />
     <Parameter Name="AssetName" Parameter="assetName" Type="System.String" DbType="VarChar(200)" />
     <Parameter Name="AssetBrandCode" Parameter="assetBrandCode" Type="System.String" DbType="VarChar(20)" />
     <Parameter Name="AssetModelCode" Parameter="assetModelCode" Type="System.String" DbType="VarChar(20)" />
@@ -49,7 +49,6 @@
     <Parameter Name="QRCode" Parameter="qRCode" Type="System.String" DbType="VarChar(MAX)" />
     <Parameter Name="SiteCode" Parameter="siteCode" Type="System.String" DbType="VarChar(50)" />
     <Parameter Name="LocationCode" Parameter="locationCode" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="AssignTo" Parameter="assignTo" Type="System.String" DbType="VarChar(100)" />
     <Parameter Name="PurchaseNo" Parameter="purchaseNo" Type="System.String" DbType="VarChar(20)" />
     <Parameter Name="CurrencyCode" Parameter="currencyCode" Type="System.String" DbType="VarChar(5)" />
     <Parameter Name="PurchasePrice" Parameter="purchasePrice" Type="System.Decimal" DbType="Decimal(18,0)" />
@@ -69,7 +68,7 @@
     <Parameter Name="Tipe" Parameter="tipe" Type="System.String" DbType="VarChar(1)" />
     <ElementType Name="MsAsset_ViewResult">
       <Column Name="AssetPhoto" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="AssetTagID" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="AssetTagID" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
       <Column Name="AssetName" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
       <Column Name="AssetBrand" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="PurchaseDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
@@ -302,7 +301,7 @@
     <Parameter Name="LocationCode" Parameter="locationCode" Type="System.String" DbType="VarChar(20)" />
     <Parameter Name="Tipe" Parameter="tipe" Type="System.String" DbType="VarChar(1)" />
     <ElementType Name="MsLocation_ViewResult">
-      <Column Name="LocationCode" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="LocationCode" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
       <Column Name="LocationName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Iby" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="Ion" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
@@ -326,7 +325,7 @@
     <Parameter Name="SiteCode" Parameter="siteCode" Type="System.String" DbType="VarChar(20)" />
     <Parameter Name="Tipe" Parameter="tipe" Type="System.String" DbType="VarChar(1)" />
     <ElementType Name="MsSite_ViewResult">
-      <Column Name="SiteCode" Type="System.String" DbType="VarChar(7) NOT NULL" CanBeNull="false" />
+      <Column Name="SiteCode" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
       <Column Name="SiteName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Address" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
       <Column Name="City" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
@@ -410,21 +409,60 @@
       <Column Name="Ion" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </ElementType>
   </Function>
+  <Function Name="dbo.TrxCheckIn_IUD" Method="TrxCheckIn_IUD">
+    <Parameter Name="AssetCode" Parameter="assetCode" Type="System.String" DbType="VarChar(15)" />
+    <Parameter Name="Action" Parameter="action" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="SiteCode" Parameter="siteCode" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="LocationCode" Parameter="locationCode" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="CheckOutDueDate" Parameter="checkOutDueDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="VarChar(200)" />
+    <Parameter Name="Notes" Parameter="notes" Type="System.String" DbType="VarChar(200)" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="No" Parameter="no" Type="System.Int32" DbType="Int" />
+  </Function>
   <Function Name="dbo.TrxCheckIn_View" Method="TrxCheckIn_View">
     <Parameter Name="CheckInNo" Parameter="checkInNo" Type="System.String" DbType="VarChar(20)" />
     <Parameter Name="Tipe" Parameter="tipe" Type="System.String" DbType="VarChar(1)" />
     <ElementType Name="TrxCheckIn_ViewResult">
       <Column Name="CheckInNo" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
-      <Column Name="Status" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
       <Column Name="NamaStatus" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Type" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
       <Column Name="NamaType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="ReturnDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ReturnDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SiteCode" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="SiteName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="LocationCode" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="LocationName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.TrxCheckInLine_View" Method="TrxCheckInLine_View">
+    <Parameter Name="CheckInNo" Parameter="checkInNo" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="AssetCode" Parameter="assetCode" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="Tipe" Parameter="tipe" Type="System.String" DbType="VarChar(1)" />
+    <ElementType Name="TrxCheckInLine_ViewResult">
+      <Column Name="CheckInNo" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="AssetCode" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="AssetName" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="AssetSerialNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="SiteCode" Type="System.String" DbType="VarChar(7)" CanBeNull="true" />
       <Column Name="SiteName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="LocationCode" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
       <Column Name="LocationName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Iby" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Ion" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </ElementType>
+  </Function>
+  <Function Name="dbo.TrxCheckOut_IUD" Method="TrxCheckOut_IUD">
+    <Parameter Name="AssetCode" Parameter="assetCode" Type="System.String" DbType="VarChar(15)" />
+    <Parameter Name="Action" Parameter="action" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="SiteCode" Parameter="siteCode" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="LocationCode" Parameter="locationCode" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="CheckOutDueDate" Parameter="checkOutDueDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="VarChar(200)" />
+    <Parameter Name="Notes" Parameter="notes" Type="System.String" DbType="VarChar(200)" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="No" Parameter="no" Type="System.Int32" DbType="Int" />
   </Function>
   <Function Name="dbo.TrxCheckOut_View" Method="TrxCheckOut_View">
     <Parameter Name="CheckOutNo" Parameter="checkOutNo" Type="System.String" DbType="VarChar(20)" />
@@ -447,16 +485,21 @@
       <Column Name="Ion" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
-  <Function Name="dbo.TrxDeleteAsset_View" Method="TrxDeleteAsset_View">
-    <Parameter Name="DeleteNo" Parameter="deleteNo" Type="System.String" DbType="VarChar(20)" />
+  <Function Name="dbo.TrxCheckOutLine_View" Method="TrxCheckOutLine_View">
+    <Parameter Name="CheckOutNo" Parameter="checkOutNo" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="AssetCode" Parameter="assetCode" Type="System.String" DbType="VarChar(10)" />
     <Parameter Name="Tipe" Parameter="tipe" Type="System.String" DbType="VarChar(1)" />
-    <ElementType Name="TrxDeleteAsset_ViewResult">
-      <Column Name="DeleteNo" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
-      <Column Name="Status" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
-      <Column Name="NamaStatus" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Notes" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
-      <Column Name="Iby" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Ion" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    <ElementType Name="TrxCheckOutLine_ViewResult">
+      <Column Name="CheckOutNo" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="AssetCode" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="AssetName" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="AssetSerialNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="SiteCode" Type="System.String" DbType="VarChar(7)" CanBeNull="true" />
+      <Column Name="SiteName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="LocationCode" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="LocationName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Iby" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Ion" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </ElementType>
   </Function>
   <Function Name="dbo.TrxDisposeAsset_View" Method="TrxDisposeAsset_View">
@@ -470,6 +513,23 @@
       <Column Name="Reason" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
       <Column Name="Iby" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Ion" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.TrxDisposeAssetLine_View" Method="TrxDisposeAssetLine_View">
+    <Parameter Name="DisposeNo" Parameter="disposeNo" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="AssetCode" Parameter="assetCode" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="Tipe" Parameter="tipe" Type="System.String" DbType="VarChar(1)" />
+    <ElementType Name="TrxDisposeAssetLine_ViewResult">
+      <Column Name="DisposeNo" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="AssetCode" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="AssetName" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="AssetSerialNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="SiteCode" Type="System.String" DbType="VarChar(7)" CanBeNull="true" />
+      <Column Name="SiteName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="LocationCode" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="LocationName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Iby" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Ion" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </ElementType>
   </Function>
   <Function Name="dbo.TrxMaintenanceAsset_View" Method="TrxMaintenanceAsset_View">
@@ -490,19 +550,21 @@
       <Column Name="Ion" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
-  <Function Name="dbo.TrxSellingAsset_View" Method="TrxSellingAsset_View">
-    <Parameter Name="SellingNo" Parameter="sellingNo" Type="System.String" DbType="VarChar(20)" />
+  <Function Name="dbo.TrxMaintenanceAssetLine_View" Method="TrxMaintenanceAssetLine_View">
+    <Parameter Name="MaintenanceAssetNo" Parameter="maintenanceAssetNo" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="AssetCode" Parameter="assetCode" Type="System.String" DbType="VarChar(10)" />
     <Parameter Name="Tipe" Parameter="tipe" Type="System.String" DbType="VarChar(1)" />
-    <ElementType Name="TrxSellingAsset_ViewResult">
-      <Column Name="SellingNo" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
-      <Column Name="Status" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
-      <Column Name="NamaStatus" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="SellingDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="SellingNo1" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
-      <Column Name="SellingAmount" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
-      <Column Name="Notes" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
-      <Column Name="Iby" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Ion" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    <ElementType Name="TrxMaintenanceAssetLine_ViewResult">
+      <Column Name="MaintenanceAssetNo" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="AssetCode" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="AssetName" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="AssetSerialNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="SiteCode" Type="System.String" DbType="VarChar(7)" CanBeNull="true" />
+      <Column Name="SiteName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="LocationCode" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="LocationName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Iby" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Ion" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </ElementType>
   </Function>
   <Function Name="dbo.UtilGroupMenu_IUD" Method="UtilGroupMenu_IUD">
