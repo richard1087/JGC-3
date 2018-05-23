@@ -1,0 +1,724 @@
+﻿
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script type="text/javascript">
+    function InputData() {
+        var SiteId = document.getElementById("SiteId").value;
+        var CategoryId = document.getElementById("CategoryId").value;
+        var LocationId = document.getElementById("LocationId").value;
+        var DepartmentId = document.getElementById("DepartmentId").value;
+        var AssetNameId = document.getElementById("AssetNameId").value;
+        var SupplierId = document.getElementById("SupplierId").value;
+        var PurchaseNoId = document.getElementById("PurchaseNoId").value;
+        var BrandId = document.getElementById("BrandId").value;
+        var ModelId = document.getElementById("ModelId").value;
+        var PriceId = document.getElementById("PriceId").value;
+        var SerialNoId = document.getElementById("SerialNoId").value;
+        var TypeId = document.getElementById("TypeId").value;
+        var CurrencyId = document.getElementById("CurrencyId").value;
+        var StatusId = document.getElementById("StatusId").value;
+        var WarrantyId = document.getElementById("WarrantyId").value;
+
+        if (SiteId == "") {
+            $(".modal-body #peringatan3").text("Site harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (CategoryId == "") {
+            $(".modal-body #peringatan3").text("Category harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (LocationId == "") {
+            $(".modal-body #peringatan3").text("Location harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (DepartmentId == "") {
+            $(".modal-body #peringatan3").text("Deoartment harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (AssetNameId == "") {
+            $(".modal-body #peringatan3").text("Asset Name harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (SupplierId == "") {
+            $(".modal-body #peringatan3").text("Supplier harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (PurchaseNoId == "") {
+            $(".modal-body #peringatan3").text("Purchase No harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (BrandId == "") {
+            $(".modal-body #peringatan3").text("Brand harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (ModelId == "") {
+            $(".modal-body #peringatan3").text("Model harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (PriceId == "") {
+            $(".modal-body #peringatan3").text("Price harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (SerialNoId == "") {
+            $(".modal-body #peringatan3").text("Serial No harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (TypeId == "") {
+            $(".modal-body #peringatan3").text("Type harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (CurrencyId == "") {
+            $(".modal-body #peringatan3").text("Currency harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (StatusId == "") {
+            $(".modal-body #peringatan3").text("Status harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (WarrantyId == "") {
+            $(".modal-body #peringatan3").text("Warranty harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        }
+    }
+
+    function InputDataSite() {
+        var SiteId = document.getElementById("SiteId").value;
+        var DescriptionId = document.getElementById("DescriptionId").value;
+        var AddressId = document.getElementById("AddressId").value;
+        var CityId = document.getElementById("CityId").value;
+        var StateId = document.getElementById("StateId").value;
+        var PostalCodeId = document.getElementById("PostalCodeId").value;
+        var CountryId = document.getElementById("CountryId").value;
+
+        if (SiteId == "") {
+            $(".modal-body #peringatan3").text("Site harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (DescriptionId == "") {
+            $(".modal-body #peringatan3").text("Description harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (AddressId == "") {
+            $(".modal-body #peringatan3").text("Address harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (CityId == "") {
+            $(".modal-body #peringatan3").text("City harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (StateId == "") {
+            $(".modal-body #peringatan3").text("State harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (PostalCodeId == "") {
+            $(".modal-body #peringatan3").text("Postal Code harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (CountryId == "") {
+            $(".modal-body #peringatan3").text("Country harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        }
+    }
+
+    function InputDataCategory() {
+        var CategoryNameId = document.getElementById("CategoryNameId").value;
+
+        if (CategoryNameId == "") {
+            $(".modal-body #peringatan3").text("Category Name harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        }
+    }
+
+    function InputDataLocation() {
+        var SiteId = document.getElementById("SiteId").value;
+        var LocationId = document.getElementById("LocationId").value;
+
+        if (SiteId == "") {
+            $(".modal-body #peringatan3").text("Site harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (LocationId == "") {
+            $(".modal-body #peringatan3").text("Location harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        }
+    }
+
+    function InputDataDepartment() {
+        var DepartmentCodeId = document.getElementById("DepartmentCodeId").value;
+        var DepartmentNameId = document.getElementById("DepartmentNameId").value;
+
+        if (DepartmentCodeId == "") {
+            $(".modal-body #peringatan3").text("Department Code harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (DepartmentNameId == "") {
+            $(".modal-body #peringatan3").text("Department Name harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        }
+    }
+
+</script>
+
+<div class="right_col" role="main">
+    <div class="">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="menusect">
+                        <h5>
+                            Assets •
+                            <a href="/asset" class="activemenu">List of Assets</a> •
+                            <a href="/asset/update" class="activemenu">Edit Asset</a>
+                        </h5>
+                    </div>
+                    <div class="x_title">
+                        <h2>Update an Asset</h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <form class="form-horizontal form-label-left">
+
+                            <div class="form-group">
+                                <h3 style="color: #c11118;border-bottom: 1px dashed;padding-bottom: 5px;">Site Location, Category, and Departments</h3>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Site</label>
+                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                    <input list="Site" id="SiteId" name="Site" class="form-control" placeholder="Select Site">
+                                    <datalist id="Site">
+                                        <option value="Site 1">
+                                        <option value="Site 2">
+                                        <option value="Site 3">
+                                        <option value="Site 4">
+                                        <option value="Site 5">
+                                    </datalist>
+                                </div>
+                                <div class="col-md-1 col-sm-1 col-xs-12">
+                                    <button id="createsite" type="button" class="btn btn-success">New</button>
+                                </div>
+
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Category</label>
+                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                    <input list="Category" id="CategoryId" name="Category" class="form-control" placeholder="Select Category">
+                                    <datalist id="Category">
+                                        <option value="Category 1">
+                                        <option value="Category 2">
+                                        <option value="Category 3">
+                                        <option value="Category 4">
+                                        <option value="Category 5">
+                                    </datalist>
+                                </div>
+                                <div class="col-md-1 col-sm-1 col-xs-12">
+                                    <button id="createcategory" type="button" class="btn btn-success">New</button>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Location</label>
+                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                    <input list="location" id="LocationId" name="location" class="form-control" placeholder="Select a Location">
+                                    <datalist id="location">
+                                        <option value="Location 1">
+                                        <option value="Location 2">
+                                        <option value="Location 3">
+                                        <option value="Location 4">
+                                        <option value="Location 5">
+                                    </datalist>
+                                </div>
+                                <div class="col-md-1 col-sm-1 col-xs-12">
+                                    <button id="createlocation" type="button" class="btn btn-success">New</button>
+                                </div>
+
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Department</label>
+                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                    <input list="department" id="DepartmentId" name="department" class="form-control" placeholder="Select a Department">
+                                    <datalist id="department">
+                                        <option value="Department 1">
+                                        <option value="Department 2">
+                                        <option value="Department 3">
+                                        <option value="Department 4">
+                                        <option value="Department 5">
+                                    </datalist>
+                                </div>
+                                <div class="col-md-1 col-sm-1 col-xs-12">
+                                    <button id="createdepartment" type="button" class="btn btn-success">New</button>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <h3 style="color: #c11118;border-bottom: 1px dashed;padding-bottom: 5px;">Asset Details</h3>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Asset Tag ID</label>
+                                <div class="col-md-11 col-sm-11 col-xs-12">
+                                    <input type="text" name="AssetTagID" class="form-control col-md-10" placeholder="Auto Generated" readonly />
+                                </div>
+
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Asset Name</label>
+                                <div class="col-md-5 col-sm-5 col-xs-12">
+                                    <input type="text" id="AssetNameId" name="Asset Name" class="form-control col-md-10" placeholder="Asset Name" />
+                                </div>
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Supplier Name</label>
+                                <div class="col-md-5 col-sm-5 col-xs-12">
+                                    <input list="Supplier" id="SupplierId" name="SupplierName" class="form-control col-md-10" placeholder="Select Supplier Name">
+                                    <datalist id="Supplier">
+                                        <option value="Supplier 1">
+                                        <option value="Supplier 2">
+                                        <option value="Supplier 3">
+                                        <option value="Supplier 4">
+                                        <option value="Supplier 5">
+                                    </datalist>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Purchase No</label>
+                                <div class="col-md-5 col-sm-5 col-xs-12">
+                                    <input type="text" id="PurchaseNoId" name="PurchaseNo" class="form-control col-md-10" placeholder="Purchase No" />
+                                </div>
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Brand</label>
+                                <div class="col-md-5 col-sm-5 col-xs-12">
+                                    <input list="Brand" id="BrandId" name="Brand" class="form-control col-md-10" placeholder="Select Brand">
+                                    <datalist id="Brand">
+                                        <option value="Brand 1">
+                                        <option value="Brand 2">
+                                        <option value="Brand 3">
+                                        <option value="Brand 4">
+                                        <option value="Brand 5">
+                                    </datalist>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Purchase Date</label>
+                                <div class="col-md-5 col-sm-5 xdisplay_inputx form-group has-feedback" style="margin-bottom: 0 !important;">
+                                    <input type="text" class="form-control has-feedback-left" id="single_cal2" placeholder="Purchase Date" aria-describedby="purchaseDate">
+                                    <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+                                    <span id="purchaseDate" class="sr-only">(success)</span>
+                                </div>
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Model</label>
+                                <div class="col-md-5 col-sm-5 col-xs-12">
+                                    <input list="Model" id="ModelId" name="Model" class="form-control col-md-10" placeholder="Select Model">
+                                    <datalist id="Model">
+                                        <option value="Model 1">
+                                        <option value="Model 2">
+                                        <option value="Model 3">
+                                        <option value="Model 4">
+                                        <option value="Model 5">
+                                    </datalist>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Purchase Price</label>
+                                <div class="col-md-5 col-sm-5 col-xs-12">
+                                    <input type="number" id="PriceId" name="Purchase Price" class="form-control col-md-10" placeholder="Purchase Price" />
+                                </div>
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Serial No</label>
+                                <div class="col-md-5 col-sm-5 col-xs-12">
+                                    <input type="text" id="SerialNoId" name="SerialNo" class="form-control col-md-10" placeholder="Serial No" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Type</label>
+                                <div class="col-md-5 col-sm-5 col-xs-12">
+                                    <input list="Type" id="TypeId" name="Type" class="form-control" placeholder="Select Type">
+                                    <datalist id="Type">
+                                        <option value="Type 1">
+                                        <option value="Type 2">
+                                        <option value="Type 3">
+                                        <option value="Type 4">
+                                        <option value="Type 5">
+                                    </datalist>
+                                </div>
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Currency</label>
+                                <div class="col-md-5 col-sm-5 col-xs-12">
+                                    <input list="Currency" id="CurrencyId" name="Currency" class="form-control col-md-10" placeholder="Select Currency">
+                                    <datalist id="Currency">
+                                        <option value="USD">
+                                        <option value="IDR">
+                                    </datalist>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Status</label>
+                                <div class="col-md-5 col-sm-5 col-xs-12">
+                                    <input list="Status" id="StatusId" name="Status" class="form-control col-md-10" placeholder="Select Status">
+                                    <datalist id="Status">
+                                        <option value="Status 1">
+                                        <option value="Status 2">
+                                        <option value="Status 3">
+                                        <option value="Status 4">
+                                        <option value="Status 5">
+                                    </datalist>
+                                </div>
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Warranty</label>
+                                <div class="col-md-1 col-sm-1 col-xs-12">
+                                    <input type="number" id="WarrantyId" name="Warranty" class="form-control col-md-10" placeholder="Warranty" />
+                                </div>
+                                <div class="col-md-1 col-sm-1 col-xs-12" style="padding:0;"><label style="margin-top:7px;font-size:15px !important;">/ Month</label></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Active</label>
+                                <div class="col-md-1 col-sm-1 col-xs-12">
+                                    <div class="checkbox">
+                                        <label style="padding-left:0 !important">
+                                            <input id="ActiveId" type="checkbox" class="flat" value=""> Yes
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Capitalized</label>
+                                <div class="col-md-1 col-sm-1 col-xs-12">
+                                    <div class="checkbox">
+                                        <label style="padding-left:0 !important">
+                                            <input id="CapitalizedId" type="checkbox" class="flat" value=""> Yes
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <h3 style="color: #c11118;border-bottom: 1px dashed;padding-bottom: 5px;">Asset Photo</h3>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Upload Image</label>
+                                <div class="col-md-5 col-sm-5 col-xs-12">
+                                    <input type="file" name="file" id="file" class="btn btn-success btn-cust inputfile" />
+                                    <label for="file" class="ftwegthin"><i class="fa fa-upload icon-white mgr5"></i> Select Import File...</label>
+                                </div>
+                            </div>
+
+                            <div class="ln_solid"></div>
+                            <div class="form-group">
+                                <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-1">
+                                    <button class="btn btn-default" type="button">Cancel</button>
+                                    <button type="submit" class="btn btn-success" onclick="InputData(); return false;">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL1 START -->
+<div class="modal fade" id="siteModal" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title ">Add Site</h4>
+            </div>
+            <div class="modal-body ">
+
+                <p style="margin-left:8px; margin-bottom:25px;">Enter the data about your new site in the fields below and we will add it to your list.</p>
+
+                <form class="form-horizontal form-label-left">
+                    <div class="form-group">
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Site</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input id="SiteId" type="text" class="form-control" placeholder="Site">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Description</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input id="DescriptionId" type="text" class="form-control" placeholder="Description">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Address</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input id="AddressId" type="text" class="form-control" placeholder="Address">
+                        </div>
+                    </div>
+                    <!--<div class="form-group">
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Apt./Suite</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input id="" type="text" class="form-control" placeholder="Apt./Suite">
+                        </div>
+                    </div>-->
+                    <div class="form-group">
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">City</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input id="CityId" type="text" class="form-control" placeholder="City">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">State</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input id="StateId" type="text" class="form-control" placeholder="State">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Postal Code</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input id="PostalCodeId" type="text" class="form-control" placeholder="Postal Code">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Country</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input id="CountryId" list="Country" name="Country" class="form-control" placeholder="Select a Country">
+                            <datalist id="Country">
+                                <option value="Country 1">
+                                <option value="Country 2">
+                                <option value="Country 3">
+                                <option value="Country 4">
+                                <option value="Country 5">
+                            </datalist>
+                        </div>
+                    </div>
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                        <div class="col-md-10 col-sm-10 col-xs-12 col-md-offset-2">
+                            <button type="button" id="SiteCancelId" class="btn btn-primary">Cancel</button>
+                            <button type="submit" id="SiteSubmitId" class="btn btn-success" onclick="InputDataSite(); return false;">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- MODAL1 END -->
+
+<!-- MODAL2 START -->
+<div class="modal fade" id="categoryModal" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title ">Add a Category</h4>
+            </div>
+            <div class="modal-body ">
+
+                <p style="margin-left:8px; margin-bottom:25px;">If you want to add a new category of assets, you’re in the right spot. Add a category for computer equipment, wireless keyboards, or any assets you’re working with.</p>
+
+                <form class="form-horizontal form-label-left">
+                    <div class="form-group">
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Category</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input id="CategoryNameId" type="text" class="form-control" placeholder="Category">
+                        </div>
+                    </div>
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                        <div class="col-md-10 col-sm-10 col-xs-12 col-md-offset-2">
+                            <button id="CategoryCancelId" type="button" class="btn btn-primary">Cancel</button>
+                            <button id="CategorySubmitId" type="submit" class="btn btn-success" onclick="InputDataCategory(); return false;">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- MODAL2 END -->
+
+<!-- MODAL3 START -->
+<div class="modal fade" id="locationModal" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title ">Add an Location</h4>
+            </div>
+            <div class="modal-body ">
+
+                <p style="margin-left:8px; margin-bottom:25px;">Enter the data about your new site in the fields below and we will add it to your list.</p>
+
+                <form class="form-horizontal form-label-left">
+                    <div class="form-group">
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Site</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input id="SiteId" list="Site" name="Site" class="form-control" placeholder="Select a Site">
+                            <datalist id="Site">
+                                <option value="Site 1">
+                                <option value="Site 2">
+                                <option value="Site 3">
+                                <option value="Site 4">
+                                <option value="Site 5">
+                            </datalist>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Location</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input id="LocationId" type="text" class="form-control" placeholder="Location">
+                        </div>
+                    </div>
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                        <div class="col-md-10 col-sm-10 col-xs-12 col-md-offset-2">
+                            <button id="LocationCancelId" type="button" class="btn btn-primary">Cancel</button>
+                            <button id="LocationSubmitId" type="submit" class="btn btn-success" onclick="InputDataLocation(); return false;">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- MODAL3 END -->
+
+<!-- MODAL4 START -->
+<div class="modal fade" id="departmentModal" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title ">Create Department</h4>
+            </div>
+            <div class="modal-body ">
+
+                <p style="margin-left:8px; margin-bottom:25px;">Add departments that own or house the particular assets. Make them as broad or as specific as you want. Departments can be 'Accounting', 'Marketing', or 'Executive'. Customize to your particular need.</p>
+
+                <form class="form-horizontal form-label-left">
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Department Code</label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <input id="DepartmentCodeId" type="text" class="form-control" placeholder="Department Code">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Department Name</label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <input id="DepartmentNameId" type="text" class="form-control" placeholder="Department Name">
+                        </div>
+                    </div>
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                        <div class="col-md-9 col-sm-10 col-xs-12 col-md-offset-3">
+                            <button id="DepartmentCancelId" type="button" class="btn btn-primary">Cancel</button>
+                            <button id="DepartmentSubmitId" type="submit" class="btn btn-success" onclick="InputDataDepartment(); return false;">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- MODAL4 END -->
+
+@Html.Partial("~/Views/Shared/WarningModal.cshtml")
+@RenderPage("~/Views/Shared/_FooterLayout.cshtml")
+
+<script type="text/javascript">
+      $(document).ready(function(){
+          $("#createsite").click(function(){
+              $("#siteModal").modal();
+          });
+          $("#SiteCancelId").click(function () {
+              $("#siteModal").modal('toggle');
+          });
+          $("#SiteSubmitId").click(function () {
+              $("#siteModal").modal('toggle');
+          });
+      });
+      $(document).ready(function(){
+          $("#createcategory").click(function () {
+              $("#categoryModal").modal();
+          });
+          $("#CategoryCancelId").click(function () {
+              $("#categoryModal").modal('toggle');
+          });
+          $("#CategorySubmitId").click(function () {
+              $("#categoryModal").modal('toggle');
+          });
+      });
+      $(document).ready(function(){
+          $("#createlocation").click(function () {
+              $("#locationModal").modal();
+          });
+          $("#LocationCancelId").click(function () {
+              $("#locationModal").modal('toggle');
+          });
+          $("#LocationSubmitId").click(function () {
+              $("#locationModal").modal('toggle');
+          });
+      });
+      $(document).ready(function(){
+          $("#createdepartment").click(function () {
+              $("#departmentModal").modal();
+          });
+          $("#DepartmentCancelId").click(function () {
+              $("#departmentModal").modal('toggle');
+          });
+          $("#DepartmentSubmitId").click(function () {
+              $("#departmentModal").modal('toggle');
+          });
+      });
+</script>

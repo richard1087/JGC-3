@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<!-- HEAD START -->
+@RenderPage("_HeadLayout.cshtml")
+<!-- HEAD END -->
+
+<body class="nav-md">
+
+    <!-- LEFT START -->
+    @RenderPage("_LeftMenu.cshtml")
+    <!-- LEFT END -->
+    <!-- TOP NAVIGATION START -->
+    @RenderPage("_TopNavigation.cshtml")
+    <!-- TOP NAVIGATION END -->
+    <!-- PAGE CONTENT START -->
+    @RenderBody()
+    <!-- PAGE CONTENT END -->
+
+</body>
+
+</html>

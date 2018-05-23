@@ -1,0 +1,296 @@
+﻿
+@{
+    ViewBag.Title = "Create Company";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script type="text/javascript">
+
+    function InputCompany() {
+        var CompanyId = document.getElementById("CompanyId").value;
+        var AddressId = document.getElementById("AddressId").value;
+        var CityId = document.getElementById("CityId").value;
+        var ProvinceId = document.getElementById("ProvinceId").value;
+        var PostalCodeId = document.getElementById("PostalCodeId").value;
+        var TelephoneId = document.getElementById("TelephoneId").value;
+
+        if (CompanyId == "") {
+            $(".modal-body #peringatan3").text("Company harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (AddressId == "") {
+            $(".modal-body #peringatan3").text("Address harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (CityId == "") {
+            $(".modal-body #peringatan3").text("City harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (ProvinceId == "") {
+            $(".modal-body #peringatan3").text("Province harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (PostalCodeId == "") {
+            $(".modal-body #peringatan3").text("Postal Code harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (TelephoneId == "") {
+            $(".modal-body #peringatan3").text("Telephone harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        }
+    }
+
+</script>
+
+<div class="right_col" role="main">
+    <div class="">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="menusect">
+                        <h5>
+                            Setup •
+                            <a href="/setup/companyinfo" class="activemenu">List Company</a> •
+                            <a href="/setup/createcompany" class="activemenu">Create Company</a>
+                        </h5>
+                    </div>
+                    <div class="x_title">
+                        <h2>Company Information</h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <form class="form-horizontal form-label-left">
+
+                            <div class="form-group">
+                                <h3 style="color: #c11118;border-bottom: 1px dashed;padding-bottom: 5px;">Company Details</h3>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-12 col-sm-12 col-xs-12">Provide the name and site of the main office.</label>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Company</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input id="CompanyId" type="text" name="Company" class="form-control col-md-10" placeholder="Company" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Address</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input id="AddressId" type="text" name="Address" class="form-control col-md-10" placeholder="Address" />
+                                </div>
+                            </div>
+
+                            <!--<div class="form-group">
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Apt./Suite</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="text" name="Apt./Suite" class="form-control col-md-10" placeholder="Apt./Suite" />
+                                </div>
+                            </div>-->
+
+                            <div class="form-group">
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">City</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input id="CityId" type="text" name="City" class="form-control col-md-10" placeholder="City" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Province</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input id="ProvinceId" type="text" name="Province" class="form-control col-md-10" placeholder="Province" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Postal Code</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input id="PostalCodeId" type="text" name="Postal Code" class="form-control col-md-10" placeholder="Postal Code" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Telephone</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="tel" id="TelephoneId" name="Telephone" class="form-control col-md-10" placeholder="Telephone" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Active</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="checkbox">
+                                        <label style="padding-left:0 !important">
+                                            <input id="ActiveId" type="checkbox" class="flat" value=""> Yes
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--<div class="form-group">
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Country</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input list="Country" name="Site" class="form-control" placeholder="Select Country">
+                                    <datalist id="Country">
+                                        <option value="Country 1">
+                                        <option value="Country 2">
+                                        <option value="Country 3">
+                                        <option value="Country 4">
+                                        <option value="Country 5">
+                                    </datalist>
+                                </div>
+                            </div>-->
+                            <!--<div class="form-group">
+                                <h3 style="color: #c11118;border-bottom: 1px dashed;padding-bottom: 5px;">Timezone and Currency</h3>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-12 col-sm-12 col-xs-12">Adjust the settings to fit your local timezone and currency to keep everything organized.</label>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Timezone</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input list="Timezone" name="Site" class="form-control" placeholder="Select Timezone">
+                                    <datalist id="Timezone">
+                                        <option value="(GMT +7:00) Bangkok, Hanoi, Jakarta">
+                                        <option value="(GMT +7:00) Bangkok, Hanoi, Jakarta">
+                                        <option value="(GMT +7:00) Bangkok, Hanoi, Jakarta">
+                                        <option value="(GMT +7:00) Bangkok, Hanoi, Jakarta">
+                                        <option value="(GMT +7:00) Bangkok, Hanoi, Jakarta">
+                                        <option value="(GMT +7:00) Bangkok, Hanoi, Jakarta">
+                                    </datalist>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Currency</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input list="Currency" name="Site" class="form-control" placeholder="Select Currency">
+                                    <datalist id="Currency">
+                                        <option value="Indonesia Rupiah (IDR Rp)">
+                                        <option value="Hongkong Dollar(HKD $)">
+                                        <option value="Indonesia Rupiah (IDR Rp)">
+                                        <option value="Indonesia Rupiah (IDR Rp)">
+                                        <option value="Indonesia Rupiah (IDR Rp)">
+                                    </datalist>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Date Format</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input list="DateFormat" name="Site" class="form-control" placeholder="Select Date Format">
+                                    <datalist id="DateFormat">
+                                        <option value="dd/MM/yyyy">
+                                        <option value="MM/dd/yyyy">
+                                        <option value="yyyy-MM-dd">
+                                    </datalist>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Financial Year begins on</label>
+                                <div class="col-md-2 col-sm-2 col-xs-12">
+                                    <input list="Month" name="Site" class="form-control" placeholder="Month">
+                                    <datalist id="Month">
+                                        <option value="January">
+                                        <option value="February">
+                                        <option value="March">
+                                        <option value="April">
+                                        <option value="May">
+                                        <option value="June">
+                                        <option value="July">
+                                        <option value="August">
+                                        <option value="September">
+                                        <option value="October">
+                                        <option value="November">
+                                        <option value="December">
+                                    </datalist>
+                                </div>
+                                <div class="col-md-1 col-sm-1 col-xs-12">
+                                    <input list="Date" name="Site" class="form-control" placeholder="Date">
+                                    <datalist id="Date">
+                                        <option value="1">
+                                        <option value="2">
+                                        <option value="3">
+                                        <option value="4">
+                                        <option value="5">
+                                        <option value="6">
+                                        <option value="7">
+                                        <option value="8">
+                                        <option value="9">
+                                        <option value="10">
+                                        <option value="11">
+                                        <option value="12">
+                                        <option value="13">
+                                        <option value="14">
+                                        <option value="15">
+                                        <option value="16">
+                                        <option value="17">
+                                        <option value="18">
+                                        <option value="19">
+                                        <option value="20">
+                                        <option value="21">
+                                        <option value="22">
+                                        <option value="23">
+                                        <option value="24">
+                                        <option value="25">
+                                        <option value="26">
+                                        <option value="27">
+                                        <option value="28">
+                                        <option value="29">
+                                        <option value="30">
+                                        <option value="31">
+                                    </datalist>
+                                </div>
+                            </div>-->
+
+                            <div class="form-group">
+                                <h3 style="color: #c11118;border-bottom: 1px dashed;padding-bottom: 5px;">Company Logo</h3>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-12 col-sm-12 col-xs-12">Upload your organization’s logo to make this space your own.</label>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">Upload your Photo</label>
+                                <div class="col-md-5 col-sm-5 col-xs-12">
+                                    <input type="file" name="file" id="file" class="btn btn-success btn-cust inputfile" />
+                                    <label for="file" class="ftwegthin"><i class="fa fa-upload icon-white mgr5"></i> Select Import File...</label>
+                                </div>
+                            </div>
+
+                            <div class="ln_solid"></div>
+                            <div class="form-group">
+                                <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-1">
+                                    <button class="btn btn-default" type="button">Cancel</button>
+                                    <button type="submit" class="btn btn-success" onclick="InputCompany(); return false;" >Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@Html.Partial("~/Views/Shared/WarningModal.cshtml")
+@RenderPage("~/Views/Shared/_FooterLayout.cshtml")

@@ -1,0 +1,277 @@
+﻿
+@{
+    ViewBag.Title = "Exchangerate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script type="text/javascript">
+
+    function InputExchangeRate() {
+        var CurrencyId = document.getElementById("CurrencyId").value;
+        var CurrencyConvertId = document.getElementById("CurrencyConvertId").value;
+        var RateId = document.getElementById("RateId").value;
+
+        if (CurrencyId == "") {
+            $(".modal-body #peringatan3").text("Currency harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (CurrencyConvertId == "") {
+            $(".modal-body #peringatan3").text("Currency Convert harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (RateId == "") {
+            $(".modal-body #peringatan3").text("Rate harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        }
+    }
+
+    function InputEditExchangeRate() {
+        var EditCurrencyId = document.getElementById("EditCurrencyId").value;
+        var EditCurrencyConvertId = document.getElementById("EditCurrencyConvertId").value;
+        var EditRateId = document.getElementById("EditRateId").value;
+
+        if (EditCurrencyId == "") {
+            $(".modal-body #peringatan3").text("Currency harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (EditCurrencyConvertId == "") {
+            $(".modal-body #peringatan3").text("Currency Convert harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        } else if (EditRateId == "") {
+            $(".modal-body #peringatan3").text("Rate harus diisi");
+            $('#btnerror').click(function (e) {
+                $('#Alert3').modal('hide');
+            })
+            $("#Alert3").modal();
+        }
+    }
+
+</script>
+
+<div class="right_col" role="main">
+    <div class="">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="menusect">
+                        <h5>
+                            Setup •
+                            <a href="/setup/exchangerate" class="activemenu">Exchange Rate</a>
+                        </h5>
+                    </div>
+                    <div class="x_title">
+                        <h2>List of Exchange Rates</h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+
+                        <!--<p class="headcontent">
+                            Add departments that own or house the particular assets.
+                            Make them as broad or as specific as you want. Departments can be 'Accounting', 'Marketing', or 'Executive'.
+                            Customize to your particular need.
+                        </p>-->
+
+                        <div class="col-md-12 col-sm-12 col-xs-12 text-muted font-13 m-b-30 no-padding">
+                            <div class="mgbtm20">
+                                <a href="#" id="tambahrate" class="btn btn-success btn-cust">Add New Exchange Rate</a>
+                            </div>
+                        </div>
+                        <table id="datatable-checkbox" class="table table-striped table-bordered bulk_action">
+                            <thead>
+                                <tr>
+                                    <th width="3%"><input type="checkbox" id="check-all" class="checks"></th></th>
+                                    <th width="11%">Currency</th>
+                                    <th width="11%">Currency Convert</th>
+                                    <th>Exchange Rate</th>
+                                    <th style="width:9%;"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><input type="checkbox" id="check-all" class="checks"></td>
+                                    <td><a href="#">IDR</a></td>
+                                    <td><a href="#">USD</a></td>
+                                    <td><a href="#">12800</a></td>
+                                    <td class="txtcenter">
+                                        <a href="#" id="editrate" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span></a>
+                                        <a href="#" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL1 START -->
+<div class="modal fade" id="addModal" role="dialog" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content col-md-12 col-sm-12 col-xs-12 pdlr1">
+            <div class="modal-header">
+                <h4 class="modal-title ">Add a Exchange Rate</h4>
+            </div>
+            <div class="modal-body col-md-12 col-sm-12 col-xs-12">
+
+                <form class="form-horizontal form-label-left">
+
+                    <!--<div class="form-group mgb25">
+                        <label class="control-label col-md-12 col-sm-12 col-xs-12">
+                            Add departments that own or house the particular assets. Make them as broad or as specific as you want.
+                            Departments can be 'Accounting', 'Marketing', or 'Executive'. Customize to your particular need.
+                        </label>
+                    </div>-->
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Currency</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input id="CurrencyId" list="Currency" name="Currency" class="form-control col-md-10" placeholder="Select Currency">
+                            <datalist id="Currency">
+                                <option value="USD">
+                                <option value="IDR">
+                            </datalist>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Currency Convert</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input id="CurrencyConvertId" list="CurrencyConvert" name="SupplierName" class="form-control col-md-10" placeholder="Select Currency Convert">
+                            <datalist id="CurrencyConvert">
+                                <option value="USD">
+                                <option value="IDR">
+                            </datalist>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Exchange Rate</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input id="RateId" type="number" name="ExchangeRate" class="form-control col-md-10" placeholder="Exchange Rate" />
+                        </div>
+                    </div>
+
+                    <div class="ln_solid col-md-12 col-sm-12 col-xs-12"></div>
+                    <div class="form-group col-md-12 col-sm-12 col-xs-12 pdlr0">
+                        <div class="row col-md-12 col-sm-12 col-xs-12 pdlr0" style="text-align:right;">
+                            <button id="RateAddId" type="button" class="btn btn-primary" onclick="InputExchangeRate(); return false;">Add</button>
+                            <button id="RateCancelId" type="button" class="btn btn-default">Cancel</button>
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- MODAL1 END -->
+
+<!-- MODAL2 START -->
+<div class="modal fade" id="editModal" role="dialog" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content col-md-12 col-sm-12 col-xs-12 pdlr1">
+            <div class="modal-header">
+                <h4 class="modal-title ">Edit Exchange Rate</h4>
+            </div>
+            <div class="modal-body col-md-12 col-sm-12 col-xs-12">
+
+                <form class="form-horizontal form-label-left">
+
+                    <!--<div class="form-group mgb25">
+                        <label class="control-label col-md-12 col-sm-12 col-xs-12">
+                            Add departments that own or house the particular assets. Make them as broad or as specific as you want.
+                            Departments can be 'Accounting', 'Marketing', or 'Executive'. Customize to your particular need.
+                        </label>
+                    </div>-->
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Currency</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input id="EditCurrencyId" list="Currency" name="Currency" class="form-control col-md-10" placeholder="Select Currency">
+                            <datalist id="Currency">
+                                <option value="USD">
+                                <option value="IDR">
+                            </datalist>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Currency Convert</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input id="EditConvertId" list="CurrencyConvert" name="CurrencyConvert" class="form-control col-md-10" placeholder="Select Currency Convert">
+                            <datalist id="CurrencyConvert">
+                                <option value="USD">
+                                <option value="IDR">
+                            </datalist>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Exchange Rate</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input type="number" id="EditRateId" name="ExchangeRate" class="form-control col-md-10" value="500" placeholder="Exchange Rate" />
+                        </div>
+                    </div>
+
+                    <div class="ln_solid col-md-12 col-sm-12 col-xs-12"></div>
+                    <div class="form-group col-md-12 col-sm-12 col-xs-12 pdlr0">
+                        <div class="row col-md-12 col-sm-12 col-xs-12 pdlr0" style="text-align:right;">
+                            <button id="EditRateIdButton" type="button" class="btn btn-primary" onclick="InputEditExchangeRate(); return false;">Edit</button>
+                            <button id="CancelRateIdButton" type="button" class="btn btn-default">Cancel</button>
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- MODAL2 END -->
+
+@Html.Partial("~/Views/Shared/WarningModal.cshtml")
+@RenderPage("~/Views/Shared/_FooterLayout.cshtml")
+
+<script type="text/javascript">
+      $(document).ready(function(){
+          $("#tambahrate").click(function () {
+              $("#addModal").modal();
+          });
+          //$("#RateAddId").click(function () {
+          //    $("#addModal").modal('toggle');
+          //});
+          $("#RateCancelId").click(function () {
+              $("#addModal").modal('toggle');
+          });
+
+          $("#editrate").click(function () {
+              $("#editModal").modal();
+          });
+          //$("#EditRateIdButton").click(function () {
+          //    $("#editModal").modal('toggle');
+          //});
+          $("#CancelRateIdButton").click(function () {
+              $("#editModal").modal('toggle');
+          });
+      });
+
+      $("#check-all").click(function () {
+          $(".checks").prop('checked', $(this).prop('checked'));
+      });
+
+</script>
